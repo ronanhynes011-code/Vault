@@ -21,7 +21,6 @@
         <SolidColorBrush x:Key="BorderColor" Color="#22222A"/>
         <SolidColorBrush x:Key="LineNumber" Color="#3A3A44"/>
 
-        <!-- Window control button (min/max/close) -->
         <Style x:Key="WinBtn" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="{StaticResource TextMuted}"/>
@@ -55,7 +54,6 @@
             </Style.Triggers>
         </Style>
 
-        <!-- Tab button -->
         <Style x:Key="TabBtn" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="{StaticResource TextMuted}"/>
@@ -86,7 +84,6 @@
             <Setter Property="FontWeight" Value="SemiBold"/>
         </Style>
 
-        <!-- Bottom action button -->
         <Style x:Key="BarBtn" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="#B0B0B8"/>
@@ -131,7 +128,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- ========== TITLE BAR ========== -->
+                <!-- TITLE BAR -->
                 <Grid Grid.Row="0" Background="Transparent" MouseLeftButtonDown="TitleBar_MouseDown">
                     <TextBlock Text="Vault" FontSize="12" FontWeight="SemiBold"
                                Foreground="{StaticResource TextMuted}"
@@ -150,7 +147,7 @@
                     </StackPanel>
                 </Grid>
 
-                <!-- ========== TAB BAR ========== -->
+                <!-- TAB BAR -->
                 <Grid Grid.Row="1" Background="{StaticResource BgPanel}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -170,10 +167,10 @@
                                VerticalAlignment="Center" Margin="0,0,16,0"/>
                 </Grid>
 
-                <!-- ========== CONTENT ========== -->
+                <!-- CONTENT -->
                 <Grid Grid.Row="2">
 
-                    <!-- ---- ACCOUNT PANEL ---- -->
+                    <!-- ACCOUNT PANEL -->
                     <ScrollViewer x:Name="AccountPanel" Visibility="Collapsed"
                                   VerticalScrollBarVisibility="Auto" Padding="28">
                         <StackPanel>
@@ -230,14 +227,13 @@
                         </StackPanel>
                     </ScrollViewer>
 
-                    <!-- ---- SCRIPT PANEL ---- -->
+                    <!-- SCRIPT PANEL -->
                     <Grid x:Name="ScriptPanel">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="42"/>
                         </Grid.RowDefinitions>
 
-                        <!-- Editor -->
                         <Border Grid.Row="0" Background="{StaticResource BgEditor}" BorderBrush="{StaticResource BorderColor}" BorderThickness="0,0,0,1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -245,7 +241,6 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <!-- Line numbers -->
                                 <Border Grid.Column="0" Background="{StaticResource BgEditor}">
                                     <ScrollViewer x:Name="LineNumberScroller" VerticalScrollBarVisibility="Hidden"
                                                   HorizontalScrollBarVisibility="Hidden">
@@ -256,7 +251,6 @@
                                     </ScrollViewer>
                                 </Border>
 
-                                <!-- Text editor -->
                                 <TextBox x:Name="ScriptBox" Grid.Column="1"
                                          Background="Transparent"
                                          Foreground="#E8E8E8"
@@ -276,7 +270,6 @@
                             </Grid>
                         </Border>
 
-                        <!-- Bottom toolbar -->
                         <Border Grid.Row="1" Background="{StaticResource BgPanel}" BorderBrush="{StaticResource BorderColor}" BorderThickness="0">
                             <Grid>
                                 <StackPanel Orientation="Horizontal" Margin="10,0,0,0" VerticalAlignment="Center">
@@ -328,7 +321,6 @@
             </Grid>
         </Border>
 
-        <!-- Attached popup -->
         <Popup x:Name="AttachedPopup"
                PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                Placement="Top" HorizontalOffset="0" VerticalOffset="60"
