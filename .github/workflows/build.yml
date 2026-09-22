@@ -19,13 +19,13 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore Vault.csproj
+        run: dotnet restore Vault/Vault.csproj
 
       - name: Build
-        run: dotnet build Vault.csproj -c Release --no-restore
+        run: dotnet build Vault/Vault.csproj -c Release --no-restore
 
       - name: Publish
-        run: dotnet publish Vault.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o ./publish
+        run: dotnet publish Vault/Vault.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o ./publish
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
