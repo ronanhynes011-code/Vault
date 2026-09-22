@@ -72,191 +72,181 @@
         </Style>
     </Window.Resources>
 
-    <Border CornerRadius="12" Background="{StaticResource BgDark}" BorderBrush="{StaticResource BorderColor}" BorderThickness="1">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="240"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+    <Grid>
+        <Border CornerRadius="12" Background="{StaticResource BgDark}" BorderBrush="{StaticResource BorderColor}" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="240"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" Background="{StaticResource BgPanel}" CornerRadius="12,0,0,12" BorderBrush="{StaticResource BorderColor}" BorderThickness="0,0,1,0">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-
-                    <StackPanel Grid.Row="0" Margin="24,28,24,20">
-                        <TextBlock Text="Vault" FontSize="26" FontWeight="Bold" Foreground="{StaticResource AccentGold}"/>
-                        <TextBlock Text="Executor Panel" FontSize="11" Foreground="{StaticResource TextMuted}" Margin="0,4,0,0"/>
-                    </StackPanel>
-
-                    <StackPanel Grid.Row="1" Margin="12,0">
-                        <Button Style="{StaticResource VaultButton}" HorizontalContentAlignment="Left" Margin="0,4">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#x25A1;" Margin="0,0,12,0" Foreground="{StaticResource AccentGold}"/>
-                                <TextBlock Text="Overview"/>
-                            </StackPanel>
-                        </Button>
-                        <Button Style="{StaticResource VaultButton}" HorizontalContentAlignment="Left" Margin="0,4">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#x25CB;" Margin="0,0,12,0" Foreground="{StaticResource AccentGold}"/>
-                                <TextBlock Text="Account"/>
-                            </StackPanel>
-                        </Button>
-                        <Button Style="{StaticResource VaultButton}" HorizontalContentAlignment="Left" Margin="0,4">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#x2726;" Margin="0,0,12,0" Foreground="{StaticResource AccentGold}"/>
-                                <TextBlock Text="Update Log"/>
-                            </StackPanel>
-                        </Button>
-
-                        <Separator Background="{StaticResource BorderColor}" Margin="8,16,8,8"/>
-
-                        <Button Style="{StaticResource VaultButton}" HorizontalContentAlignment="Left" Margin="0,4">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#x25C8;" Margin="0,0,12,0" Foreground="#5865F2"/>
-                                <TextBlock Text="Discord"/>
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
-
-                    <Border Grid.Row="2" Background="{StaticResource BgCard}" Margin="12,0,12,16" CornerRadius="8" Padding="12,10">
-                        <StackPanel Orientation="Horizontal">
-                            <Border Width="32" Height="32" CornerRadius="16" Background="{StaticResource AccentGold}" Margin="0,0,12,0">
-                                <TextBlock Text="V" Foreground="#0A0A0C" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                            <StackPanel VerticalAlignment="Center">
-                                <TextBlock Text="VaultUser" FontWeight="SemiBold" FontSize="13"/>
-                                <TextBlock Text="Signed in" FontSize="10" Foreground="{StaticResource TextMuted}"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </Border>
-                </Grid>
-            </Border>
-
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <Border Grid.Row="0" BorderBrush="{StaticResource BorderColor}" BorderThickness="0,0,0,1" Padding="24,16">
+                <Border Grid.Column="0" Background="{StaticResource BgPanel}" CornerRadius="12,0,0,12" BorderBrush="{StaticResource BorderColor}" BorderThickness="0,0,1,0">
                     <Grid>
-                        <TextBlock Text="Overview" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button Style="{StaticResource VaultButton}" Width="40" Margin="0,0,8,0" Click="Minimize_Click">
-                                <TextBlock Text="&#x2014;"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Margin="24,28,24,20">
+                            <TextBlock Text="Vault" FontSize="26" FontWeight="Bold" Foreground="{StaticResource AccentGold}"/>
+                            <TextBlock Text="Executor Panel" FontSize="11" Foreground="{StaticResource TextMuted}" Margin="0,4,0,0"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Margin="12,0">
+                            <Button Style="{StaticResource VaultButton}" HorizontalContentAlignment="Left" Margin="0,4">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#x25A1;" Margin="0,0,12,0" Foreground="{StaticResource AccentGold}"/>
+                                    <TextBlock Text="Overview"/>
+                                </StackPanel>
                             </Button>
-                            <Button Style="{StaticResource VaultButton}" Width="40" Click="Close_Click">
-                                <TextBlock Text="&#x2715;"/>
+                            <Button Style="{StaticResource VaultButton}" HorizontalContentAlignment="Left" Margin="0,4">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#x25CB;" Margin="0,0,12,0" Foreground="{StaticResource AccentGold}"/>
+                                    <TextBlock Text="Account"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource VaultButton}" HorizontalContentAlignment="Left" Margin="0,4">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#x2726;" Margin="0,0,12,0" Foreground="{StaticResource AccentGold}"/>
+                                    <TextBlock Text="Update Log"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Separator Background="{StaticResource BorderColor}" Margin="8,16,8,8"/>
+
+                            <Button Style="{StaticResource VaultButton}" HorizontalContentAlignment="Left" Margin="0,4">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#x25C8;" Margin="0,0,12,0" Foreground="#5865F2"/>
+                                    <TextBlock Text="Discord"/>
+                                </StackPanel>
                             </Button>
                         </StackPanel>
+
+                        <Border Grid.Row="2" Background="{StaticResource BgCard}" Margin="12,0,12,16" CornerRadius="8" Padding="12,10">
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="32" Height="32" CornerRadius="16" Background="{StaticResource AccentGold}" Margin="0,0,12,0">
+                                    <TextBlock Text="V" Foreground="#0A0A0C" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="VaultUser" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Text="Signed in" FontSize="10" Foreground="{StaticResource TextMuted}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
                     </Grid>
                 </Border>
 
-                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="24">
-                    <StackPanel>
-                        <TextBlock Text="License" FontSize="13" Foreground="{StaticResource TextMuted}" Margin="0,0,0,8"/>
-                        <Border Background="{StaticResource BgPanel}" CornerRadius="8" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" Margin="0,0,0,20">
-                            <StackPanel>
-                                <Grid Margin="16">
-                                    <TextBlock Text="Plan" Foreground="{StaticResource TextMuted}"/>
-                                    <TextBlock Text="Vault Premium" HorizontalAlignment="Right" FontWeight="Bold"/>
-                                </Grid>
-                                <Separator Background="{StaticResource BorderColor}"/>
-                                <Grid Margin="16">
-                                    <TextBlock Text="Expires" Foreground="{StaticResource TextMuted}"/>
-                                    <TextBlock Text="Lifetime" HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource AccentGold}"/>
-                                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" BorderBrush="{StaticResource BorderColor}" BorderThickness="0,0,0,1" Padding="24,16">
+                        <Grid>
+                            <TextBlock Text="Overview" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Style="{StaticResource VaultButton}" Width="40" Margin="0,0,8,0" Click="Minimize_Click">
+                                    <TextBlock Text="&#x2014;"/>
+                                </Button>
+                                <Button Style="{StaticResource VaultButton}" Width="40" Click="Close_Click">
+                                    <TextBlock Text="&#x2715;"/>
+                                </Button>
                             </StackPanel>
-                        </Border>
+                        </Grid>
+                    </Border>
 
-                        <TextBlock Text="Executor" FontSize="13" Foreground="{StaticResource TextMuted}" Margin="0,0,0,8"/>
-                        <Border Background="{StaticResource BgPanel}" CornerRadius="8" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" Margin="0,0,0,20">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-
-                                <Border Grid.Row="0" Background="{StaticResource BgCard}" CornerRadius="8,8,0,0" Padding="12,8" BorderBrush="{StaticResource BorderColor}" BorderThickness="0,0,0,1">
-                                    <TextBlock Text="Script Editor" FontSize="12" Foreground="{StaticResource TextMuted}"/>
-                                </Border>
-
-                                <TextBox x:Name="ScriptBox" Grid.Row="1"
-                                         Background="Transparent"
-                                         Foreground="#E0E0E0"
-                                         BorderThickness="0"
-                                         Padding="12"
-                                         FontFamily="Consolas"
-                                         FontSize="13"
-                                         AcceptsReturn="True"
-                                         TextWrapping="NoWrap"
-                                         VerticalScrollBarVisibility="Auto"
-                                         HorizontalScrollBarVisibility="Auto"
-                                         MinHeight="220"
-                                         Text="-- Vault Executor&#x0a;print(&quot;Hello from Vault!&quot;)"/>
-
-                                <Border Grid.Row="2" Background="{StaticResource BgCard}" CornerRadius="0,0,8,8" Padding="12,10" BorderBrush="{StaticResource BorderColor}" BorderThickness="0,1,0,0">
-                                    <Grid>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Button x:Name="InjectButton" Style="{StaticResource VaultButton}" Width="100" Margin="0,0,10,0" Click="InjectButton_Click">
-                                                <TextBlock Text="Inject"/>
-                                            </Button>
-                                            <Button x:Name="ExecuteButton" Style="{StaticResource PrimaryButton}" Width="100" Click="ExecuteButton_Click">
-                                                <TextBlock Text="Execute"/>
-                                            </Button>
-                                        </StackPanel>
-                                        <TextBlock x:Name="StatusText" Text="Not Attached" Foreground="{StaticResource TextMuted}" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="12"/>
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="24">
+                        <StackPanel>
+                            <TextBlock Text="License" FontSize="13" Foreground="{StaticResource TextMuted}" Margin="0,0,0,8"/>
+                            <Border Background="{StaticResource BgPanel}" CornerRadius="8" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" Margin="0,0,0,20">
+                                <StackPanel>
+                                    <Grid Margin="16">
+                                        <TextBlock Text="Plan" Foreground="{StaticResource TextMuted}"/>
+                                        <TextBlock Text="Vault Premium" HorizontalAlignment="Right" FontWeight="Bold"/>
                                     </Grid>
-                                </Border>
-                            </Grid>
-                        </Border>
+                                    <Separator Background="{StaticResource BorderColor}"/>
+                                    <Grid Margin="16">
+                                        <TextBlock Text="Expires" Foreground="{StaticResource TextMuted}"/>
+                                        <TextBlock Text="Lifetime" HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource AccentGold}"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
 
-                        <TextBlock Text="Compatibility" FontSize="13" Foreground="{StaticResource TextMuted}" Margin="0,0,0,8"/>
-                        <Border Background="{StaticResource BgPanel}" CornerRadius="8" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" Margin="0,0,0,20">
-                            <StackPanel>
-                                <Grid Margin="16">
-                                    <TextBlock Text="Vault Version" Foreground="{StaticResource TextMuted}"/>
-                                    <TextBlock Text="1.0.0" HorizontalAlignment="Right" FontWeight="Bold"/>
+                            <TextBlock Text="Executor" FontSize="13" Foreground="{StaticResource TextMuted}" Margin="0,0,0,8"/>
+                            <Border Background="{StaticResource BgPanel}" CornerRadius="8" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" Margin="0,0,0,20">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Border Grid.Row="0" Background="{StaticResource BgCard}" CornerRadius="8,8,0,0" Padding="12,8" BorderBrush="{StaticResource BorderColor}" BorderThickness="0,0,0,1">
+                                        <TextBlock Text="Script Editor" FontSize="12" Foreground="{StaticResource TextMuted}"/>
+                                    </Border>
+
+                                    <TextBox x:Name="ScriptBox" Grid.Row="1"
+                                             Background="Transparent"
+                                             Foreground="#E0E0E0"
+                                             BorderThickness="0"
+                                             Padding="12"
+                                             FontFamily="Consolas"
+                                             FontSize="13"
+                                             AcceptsReturn="True"
+                                             TextWrapping="NoWrap"
+                                             VerticalScrollBarVisibility="Auto"
+                                             HorizontalScrollBarVisibility="Auto"
+                                             MinHeight="220"
+                                             Text="-- Vault Executor&#x0a;print(&quot;Hello from Vault!&quot;)"/>
+
+                                    <Border Grid.Row="2" Background="{StaticResource BgCard}" CornerRadius="0,0,8,8" Padding="12,10" BorderBrush="{StaticResource BorderColor}" BorderThickness="0,1,0,0">
+                                        <Grid>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button x:Name="InjectButton" Style="{StaticResource VaultButton}" Width="100" Margin="0,0,10,0" Click="InjectButton_Click">
+                                                    <TextBlock Text="Inject"/>
+                                                </Button>
+                                                <Button x:Name="ExecuteButton" Style="{StaticResource PrimaryButton}" Width="100" Click="ExecuteButton_Click">
+                                                    <TextBlock Text="Execute"/>
+                                                </Button>
+                                            </StackPanel>
+                                            <TextBlock x:Name="StatusText" Text="Not Attached" Foreground="{StaticResource TextMuted}" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="12"/>
+                                        </Grid>
+                                    </Border>
                                 </Grid>
-                                <Separator Background="{StaticResource BorderColor}"/>
-                                <Grid Margin="16">
-                                    <TextBlock Text="Roblox Version" Foreground="{StaticResource TextMuted}"/>
-                                    <TextBlock Text="Latest" HorizontalAlignment="Right" FontWeight="Bold"/>
-                                </Grid>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                </ScrollViewer>
+                            </Border>
+
+                            <TextBlock Text="Compatibility" FontSize="13" Foreground="{StaticResource TextMuted}" Margin="0,0,0,8"/>
+                            <Border Background="{StaticResource BgPanel}" CornerRadius="8" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" Margin="0,0,0,20">
+                                <StackPanel>
+                                    <Grid Margin="16">
+                                        <TextBlock Text="Vault Version" Foreground="{StaticResource TextMuted}"/>
+                                        <TextBlock Text="1.0.0" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                    <Separator Background="{StaticResource BorderColor}"/>
+                                    <Grid Margin="16">
+                                        <TextBlock Text="Roblox Version" Foreground="{StaticResource TextMuted}"/>
+                                        <TextBlock Text="Latest" HorizontalAlignment="Right" FontWeight="Bold"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
             </Grid>
-        </Grid>
-    </Border>
-
-    <Popup x:Name="AttachedPopup" PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Placement="Top" HorizontalOffset="0" VerticalOffset="40" AllowsTransparency="True" StaysOpen="False">
-        <Border Background="{StaticResource BgCard}" BorderBrush="{StaticResource AccentGold}" BorderThickness="1" CornerRadius="8" Padding="16,12" Margin="10">
-            <Border.RenderTransform>
-                <TranslateTransform x:Name="PopupTransform" Y="-20"/>
-            </Border.RenderTransform>
-            <Border.Triggers>
-                <EventTrigger RoutedEvent="Border.Loaded">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="PopupTransform" Storyboard.TargetProperty="Y" From="-20" To="0" Duration="0:0:0.3"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Border.Triggers>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="&#x1F512;" FontSize="18" Foreground="{StaticResource AccentGold}" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <StackPanel>
-                    <TextBlock Text="Attached to Client" FontWeight="Bold" Foreground="{StaticResource AccentGold}"/>
-                    <TextBlock Text="Vault is ready." FontSize="11" Foreground="{StaticResource TextMuted}"/>
-                </StackPanel>
-            </StackPanel>
         </Border>
-    </Popup>
+
+        <Popup x:Name="AttachedPopup" PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Placement="Top" HorizontalOffset="0" VerticalOffset="40" AllowsTransparency="True" StaysOpen="False">
+            <Border Background="{StaticResource BgCard}" BorderBrush="{StaticResource AccentGold}" BorderThickness="1" CornerRadius="8" Padding="16,12" Margin="10">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="&#x1F512;" FontSize="18" Foreground="{StaticResource AccentGold}" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                    <StackPanel>
+                        <TextBlock Text="Attached to Client" FontWeight="Bold" Foreground="{StaticResource AccentGold}"/>
+                        <TextBlock Text="Vault is ready." FontSize="11" Foreground="{StaticResource TextMuted}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
+    </Grid>
 </Window>
