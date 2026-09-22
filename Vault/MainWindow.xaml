@@ -128,7 +128,6 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- TITLE BAR -->
                 <Grid Grid.Row="0" Background="Transparent" MouseLeftButtonDown="TitleBar_MouseDown">
                     <TextBlock Text="Vault" FontSize="12" FontWeight="SemiBold"
                                Foreground="{StaticResource TextMuted}"
@@ -147,7 +146,6 @@
                     </StackPanel>
                 </Grid>
 
-                <!-- TAB BAR -->
                 <Grid Grid.Row="1" Background="{StaticResource BgPanel}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -167,10 +165,8 @@
                                VerticalAlignment="Center" Margin="0,0,16,0"/>
                 </Grid>
 
-                <!-- CONTENT -->
                 <Grid Grid.Row="2">
 
-                    <!-- ACCOUNT PANEL -->
                     <ScrollViewer x:Name="AccountPanel" Visibility="Collapsed"
                                   VerticalScrollBarVisibility="Auto" Padding="28">
                         <StackPanel>
@@ -227,7 +223,6 @@
                         </StackPanel>
                     </ScrollViewer>
 
-                    <!-- SCRIPT PANEL -->
                     <Grid x:Name="ScriptPanel">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -247,7 +242,7 @@
                                         <TextBlock x:Name="LineNumbers" FontFamily="Consolas" FontSize="13"
                                                    Foreground="{StaticResource LineNumber}"
                                                    TextAlignment="Right" Padding="0,12,8,12"
-                                                   LineHeight="19.5" Text="1"/>
+                                                   Text="1"/>
                                     </ScrollViewer>
                                 </Border>
 
@@ -264,9 +259,7 @@
                                          TextWrapping="NoWrap"
                                          VerticalScrollBarVisibility="Auto"
                                          HorizontalScrollBarVisibility="Auto"
-                                         TextChanged="ScriptBox_TextChanged"
-                                         ScrollChanged="ScriptBox_ScrollChanged"
-                                         Text="-- Vault Executor&#x0a;print(&quot;Hello from Vault!&quot;)"/>
+                                         TextChanged="ScriptBox_TextChanged"/>
                             </Grid>
                         </Border>
 
