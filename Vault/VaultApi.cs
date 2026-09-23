@@ -1,8 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
@@ -10,76 +10,103 @@ namespace Vault
 {
     public static class VaultApi
     {
-        [DllImport("bin\\Vault.dll", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void Initialize();
+        private const string SocketHost = "127.0.0.1";
+        private const int SocketPort = 6969;
+        private const int ConnectTimeoutMs = 5000;
 
-        [DllImport("bin\\Vault.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        private static extern void ExecuteAsync(byte[] scriptSource, string[] clientUsers, int numUsers);
+        public static bool IsAttached { get; private set; }
 
-        [DllImport("bin\\Vault.dll", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr GetClients();
-
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-        public struct ClientInfo
+        private static string BackendDir
         {
-            public string version;
-            public string name;
-            public int id;
+            get { return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "backend"); }
         }
-
-        public static bool IsAttached { get; private set; } = false;
 
         public static void Inject()
         {
             if (!IsRobloxOpen())
-                throw new Exception("Roblox is not running.");
+                throw new Exception("Roblox is not running. Launch it and join a game first.");
 
-            try
+            string injectorPath = Path.Combine(BackendDir, "YuB-X-Injector.exe");
+            string modulePath = Path.Combine(BackendDir, "example_dll.dll");
+
+            if (!File.Exists(injectorPath))
+                throw new Exception("Injector not found: " + injectorPath);
+            if (!File.Exists(modulePath))
+                throw new Exception("Module DLL not found: " + modulePath);
+
+            ProcessStartInfo psi = new ProcessStartInfo(injectorPath);
+            psi.WorkingDirectory = BackendDir;
+            psi.UseShellExecute = true;
+            Process.Start(psi);
+
+            // Poll for the Module's TCP server to come up inside Roblox
+            bool alive = false;
+            for (int i = 0; i < 30; i++)
             {
-                Initialize();
-                Thread.Sleep(1500);
-                IsAttached = true;
+                Thread.Sleep(400);
+                if (IsSocketAlive()) { alive = true; break; }
             }
-            catch (Exception ex)
-            {
-                IsAttached = false;
-                throw new Exception("Injection failed: " + ex.Message);
-            }
+
+            if (!alive)
+                throw new Exception("Injection failed. Module did not start its TCP server on port 6969. Close the injector console window and try again.");
+
+            IsAttached = true;
         }
 
-        public static void Execute(string scriptSource)
+        public static void Execute(string script)
         {
             if (!IsAttached)
-                throw new Exception("Not attached to a client. Inject first.");
+                throw new Exception("Not attached. Click Inject first.");
+            if (string.IsNullOrEmpty(script))
+                throw new Exception("Script is empty.");
 
-            string[] clients = GetClientsList().Select(c => c.name).ToArray();
-            if (clients.Length == 0)
+            byte[] scriptBytes = Encoding.UTF8.GetBytes(script);
+            byte[] lengthBytes = BitConverter.GetBytes(scriptBytes.Length);
+            if (BitConverter.IsLittleEndian)
+                Array.Reverse(lengthBytes);
+
+            using (TcpClient client = new TcpClient())
             {
-                IsAttached = false;
-                throw new Exception("No clients found. Inject again.");
+                IAsyncResult result = client.BeginConnect(SocketHost, SocketPort, null, null);
+                bool connected = result.AsyncWaitHandle.WaitOne(ConnectTimeoutMs);
+                if (!connected)
+                {
+                    IsAttached = false;
+                    throw new Exception("Could not reach Module on port 6969. Re-inject.");
+                }
+                client.EndConnect(result);
+
+                using (NetworkStream stream = client.GetStream())
+                {
+                    stream.Write(lengthBytes, 0, 4);
+                    stream.Write(scriptBytes, 0, scriptBytes.Length);
+                    stream.Flush();
+                }
             }
-
-            ExecuteAsync(Encoding.UTF8.GetBytes(scriptSource), clients, clients.Length);
-        }
-
-        public static List<ClientInfo> GetClientsList()
-        {
-            List<ClientInfo> list = new List<ClientInfo>();
-            IntPtr ptr = GetClients();
-
-            while (true)
-            {
-                ClientInfo info = Marshal.PtrToStructure<ClientInfo>(ptr);
-                if (info.name == null) break;
-                list.Add(info);
-                ptr += Marshal.SizeOf<ClientInfo>();
-            }
-            return list;
         }
 
         public static bool IsRobloxOpen()
         {
             return Process.GetProcessesByName("RobloxPlayerBeta").Any();
+        }
+
+        private static bool IsSocketAlive()
+        {
+            try
+            {
+                using (TcpClient client = new TcpClient())
+                {
+                    IAsyncResult result = client.BeginConnect(SocketHost, SocketPort, null, null);
+                    bool connected = result.AsyncWaitHandle.WaitOne(500);
+                    if (!connected) return false;
+                    client.EndConnect(result);
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
