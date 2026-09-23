@@ -10,11 +10,4 @@
     <RootNamespace>Vault</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="native\**\*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Link>bin\%(RecursiveDir)%(Filename)%(Extension)</Link>
-    </None>
-  </ItemGroup>
-
 </Project>
